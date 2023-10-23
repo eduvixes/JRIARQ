@@ -67,11 +67,16 @@ class mapping extends MappingBase{
 					$cadena = $cadena . $insertarand;
 				}
 
-				if (in_array($key, $atributosnumericos)){
-					$cadena = $cadena . "(" . $key . "=" . $value . ")";
+				if (empty($atributosnumericos)){
+					$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
 				}
 				else{
-					$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
+					if (in_array($key, $atributosnumericos)){
+						$cadena = $cadena . "(" . $key . "=" . $value . ")";
+					}
+					else{
+						$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
+					}
 				}
 			}
 			
@@ -101,11 +106,16 @@ class mapping extends MappingBase{
 				}
 
 				if (strlen($value)!=0){
-					if (in_array($key, $atributosnumericos)){
-						$cadena = $cadena . "(" . $key . "=" . $value . ")";
+					if (empty($atributosnumericos)){
+						$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
 					}
 					else{
-						$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
+						if (in_array($key, $atributosnumericos)){
+							$cadena = $cadena . "(" . $key . "=" . $value . ")";
+						}
+						else{
+							$cadena = $cadena . "(" . $key . "=" . "'". $value . "')";
+						}
 					}
 				}
 			}
