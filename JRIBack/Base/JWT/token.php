@@ -47,7 +47,7 @@ class MiToken {
         
         $datos = [
             'id' => $contrasena,
-            'name' => $usuario
+            'name' => $usuario,
         ];
 
         // almaceno algunos datos para saber lo que puede editar

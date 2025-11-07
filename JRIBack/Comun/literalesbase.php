@@ -10,6 +10,7 @@ define('literal', array(
 		
 		// registrar
 		'REGISTRAR_OK'=>'REGISTRAR_OK',
+		'REGISTRAR_KO'=>'REGISTRAR_KO',
 		'CAMBIAR_contrasena_KO'=>'CAMBIAR_contrasena_KO',
 		'CAMBIAR_contrasena_OK'=>'CAMBIAR_contrasena_OK',
 
@@ -67,10 +68,10 @@ define('literal', array(
 
 		
 		'funcionalidad_accion_EDIT_forbidden_KO' => 'funcionalidad_accion_EDIT_forbidden_KO',
-		'funcionalidad_accion_ADD_forbidden_KO' => 'funcionalidad_accion_ADD_forbidden_KO'
+		'funcionalidad_accion_ADD_forbidden_KO' => 'funcionalidad_accion_ADD_forbidden_KO',
 		
 
-
+		'admin_no_te_lo_deja_borrar_KO'=>'admin_no_te_lo_deja_borrar_KO'
 	))
 
 ?>

@@ -262,7 +262,7 @@ abstract class appServiceBase{
 				}
 				
 				if($file_size > $size){
-					$errors[]='File size must be excately '.$size.' bytes';
+					$errors[]='File size must be exactely '.$size.' bytes';
 				}
 				
 				if(empty($errors)==true){

@@ -28,13 +28,58 @@ class persona_SERVICE extends appServiceBase{
 
 		$this->modelo = $this->crearModelOne('persona');
 
-
+		$this->files = array(
+			array('nuevo_foto_persona','foto_persona','./filesuploaded/files_foto_persona/', array('jpg','jpg'), 200000)
+		);
 	}
 
 	function modificacion_atributos(){
 
-		if ((isset($_POST['fechaNacimiento_persona'])) && ($_POST['fechaNacimiento_persona'] != '')){
-			$_POST['fechaNacimiento_persona'] = date("Y-m-d", strtotime($_POST['fechaNacimiento_persona']));
+		// si viene en el formato correcto en dd/mm/aaaa y es add o edit, modifico el formato
+
+		if ((
+			(action == 'ADD') ||
+			(action == 'EDIT')
+		)){
+			// sino viene vacio
+			if ((isset($_POST['fechaNacimiento_persona'])) && ($_POST['fechaNacimiento_persona'] != '')){
+				$expregfecha = '/[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}/';
+				
+				if (preg_match($expregfecha, $_POST['fechaNacimiento_persona'])){
+					if ((isset($_POST['fechaNacimiento_persona'])) && ($_POST['fechaNacimiento_persona'] != '')){
+						$arrayelementosfecha = explode("/",$_POST['fechaNacimiento_persona']);
+						$_POST['fechaNacimiento_persona'] = $arrayelementosfecha[2].'-'.$arrayelementosfecha[1].'-'.$arrayelementosfecha[0];
+					}
+				}
+				else{
+					$_POST['fechaNacimiento_persona'] = '-';
+				}
+			}
+		} // miro search
+		else{
+			if (action == 'SEARCH'){
+				// sino viene vacio
+				if ((isset($_POST['fechaNacimiento_persona'])) && ($_POST['fechaNacimiento_persona'] != '')){
+					// si tiene numeros y/o / lo cambio
+					$expregfecha = '/^[0-9\/]+$/';
+					if (preg_match($expregfecha, $_POST['fechaNacimiento_persona'])){
+						$arrayelementosfecha = explode("/",$_POST['fechaNacimiento_persona']);
+						
+						if (count($arrayelementosfecha) == 3){
+							$_POST['fechaNacimiento_persona'] = $arrayelementosfecha[2].'-'.$arrayelementosfecha[1].'-'.$arrayelementosfecha[0];
+						}
+						else{
+							if (count($arrayelementosfecha) == 2){
+								$_POST['fechaNacimiento_persona'] = $arrayelementosfecha[1].'-'.$arrayelementosfecha[0];
+							}
+						}
+					}
+					else{
+						// sino esta mal y no deberia devolver nada
+						$_POST['fechaNacimiento_persona'] = 'error formato';
+					}
+				}
+			}
 		}
 		
 	}
