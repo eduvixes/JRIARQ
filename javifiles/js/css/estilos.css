@@ -1,0 +1,116 @@
+/* =====================================================
+   ESTILOS GENERALES DE LA PÁGINA
+   ===================================================== */
+
+/*
+ * Elimina márgenes por defecto y define
+ * una tipografía moderna y legible.
+ */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    color: #333333;
+    margin: 0;
+    padding: 20px;
+}
+
+/*
+ * Título principal.
+ */
+h1 {
+    color: #005a9e;
+    border-bottom: 2px solid #005a9e;
+    padding-bottom: 10px;
+}
+
+/*
+ * Subtítulos.
+ */
+h2 {
+    color: #444444;
+    margin-top: 30px;
+}
+
+/*
+ * Texto descriptivo.
+ */
+p {
+    line-height: 1.6;
+}
+
+/* =====================================================
+   SELECTOR DE DIRECTORIO
+   ===================================================== */
+
+/*
+ * Apariencia del selector de archivos.
+ */
+input[type="file"] {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*
+ * Efecto al pasar el ratón.
+ */
+input[type="file"]:hover {
+    background-color: #f0f0f0;
+}
+
+/* =====================================================
+   SEPARADOR
+   ===================================================== */
+
+hr {
+    border: none;
+    border-top: 1px solid #cccccc;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* =====================================================
+   ÁREA DE RESULTADOS
+   ===================================================== */
+
+/*
+ * Contenedor donde se mostrará el JSON
+ * con los ficheros encontrados.
+ */
+#resultado {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border-radius: 8px;
+    padding: 15px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    font-size: 14px;
+    min-height: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================================================
+   DISEÑO RESPONSIVE
+   ===================================================== */
+
+/*
+ * Adaptación para móviles y tablets.
+ */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    #resultado {
+        font-size: 12px;
+    }
+}

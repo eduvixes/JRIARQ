@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Ejemplo FileManager</title>
+
+    <!--
+        Hoja de estilos opcional.
+        Puede omitirse si no hay estilos propios.
+    -->
+    <link rel="stylesheet"
+          href="css/estilos.css">
+
+    <!--
+        Clase FileManager.
+        Debe cargarse antes del script principal
+        porque la instancia será creada posteriormente.
+    -->
+    <script src="js/FileManager.js"></script>
+
+</head>
+
+<body>
+
+    <h1>Ejemplo de gestión de directorios</h1>
+
+    <p>
+        Seleccione un directorio para obtener
+        la lista de archivos contenidos.
+    </p>
+
+    <!--
+        webkitdirectory permite seleccionar
+        una carpeta completa.
+    -->
+    <input id="selectorDirectorio"
+           type="file"
+           webkitdirectory
+           multiple>
+
+    <hr>
+
+    <h2>Archivos encontrados</h2>
+
+    <pre id="resultado"></pre>
+
+    <!--
+        Script principal de la página.
+        Se coloca al final del body para
+        asegurar que todos los elementos
+        HTML se han cargado previamente.
+    -->
+    <script>
+
+        // Crear instancia de la clase.
+        const gestor = new FileManager();
+
+        // Obtener referencia al selector.
+        const selector =
+            document.getElementById(
+                "selectorDirectorio"
+            );
+
+        // Obtener referencia al contenedor
+        // donde se mostrarán los resultados.
+        const resultado =
+            document.getElementById(
+                "resultado"
+            );
+
+        /**
+         * Evento que se ejecuta cuando el usuario
+         * selecciona un directorio.
+         */
+        selector.addEventListener(
+            "change",
+            (evento) => {
+
+                const archivos =
+                    gestor.obtenerFicheros(
+                        evento.target.files
+                    );
+
+                resultado.textContent =
+                    JSON.stringify(
+                        archivos,
+                        null,
+                        4
+                    );
+
+                console.table(archivos);
+            }
+        );
+
+    </script>
+
+</body>
+</html>
